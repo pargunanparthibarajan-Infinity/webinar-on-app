@@ -10,7 +10,6 @@ const app = express();
 app.use(express.json());
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
-
 app.use('/api/webinars', webinarsRouter);
 app.use('/api/webinars', tokensRouter);
 app.use('/api/webinars', attendanceRouter);

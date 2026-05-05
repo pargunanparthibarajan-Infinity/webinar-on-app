@@ -4,7 +4,7 @@ const db                 = require('../db');
 const { pushAttendance } = require('../services/attendance');
 
 // GET /join?token=xxx — Show confirmation page
-router.get('/', async (req, res) => {
+router.get('/join', async (req, res) => {
   const { token } = req.query;
   if (!token) return res.status(400).send('Missing token');
 
@@ -82,7 +82,6 @@ router.get('/enter', async (req, res) => {
 
     const row = result.rows[0];
 
-    // Mark joined only when they click Enter Meeting
     if (!row.joined) {
       await db.query(`
         UPDATE "Webinar_On_App".webinar_tokens
